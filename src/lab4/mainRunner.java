@@ -12,6 +12,7 @@ public class mainRunner {
 
             if(result){
                 System.out.println("I=" + i);
+                System.out.println(result);
                 break;
             }
         }
