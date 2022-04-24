@@ -59,8 +59,8 @@ public class Employee {
                         new Address("Red","house_6","flat_6")),
                 new Employee("firstname_7","surname_7","lastname_7",
                         new Address("street_7","house_7","flat_7")),
-                new Employee("firstname_8","surname_8","lastname_8",
-                        new Address("Red","house_8","flat_8")),
+                new Employee("firstname_11","surname_11","lastname_11",
+                        new Address("Red","house_11","flat_11")),
                 new Employee("firstname_9","surname_9","lastname_9",
                         new Address("Red","house_9","flat_9")),
                 new Employee("firstname_10","surname_10","lastname_10",
@@ -85,18 +85,23 @@ public class Employee {
         if(toLoweCase){
             return new String(_surname + " " + _firstname + " " + _lastname).toLowerCase(Locale.ROOT);
         }
-        return new String(_surname + " " + _firstname + " " + _lastname);;
+        return new String(_surname + " " + _firstname + " " + _lastname);
 
     }
 
     public static void SortByName(List<Employee> employees){
-        for (int i = 0; i < employees.size() - 1;++i){
-            for(int j = 0; i < employees.size() - i - 1;++j){
-                if(employees.get(i).GetFullName(true) > employees.get(j).GetFullName(true))
-                {
 
+
+        for (int i = 0; i < employees.size() - 1;++i){
+            for(int j = i + 1; j < employees.size();++j){
+                if(employees.get(i).GetFirstname().compareTo((employees.get(j).GetFirstname())) > 0)
+                {
+                    var temp = employees.get(i);
+                    employees.set(i,employees.get(j));
+                    employees.set(j,temp);
                 }
             }
         }
+        return;
     }
 }

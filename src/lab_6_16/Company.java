@@ -7,7 +7,7 @@ public class Company {
 
 
     private Company(){}
-    private List<Employee> _employees = new ArrayList<Employee>();
+    private ArrayList<Employee> _employees = new ArrayList<Employee>();
     private String _title;
 
     public Company(String title,Employee ... employees){
@@ -24,7 +24,7 @@ public class Company {
             _employees.add(employees[i]);
         }
     }
-    public List<Employee> FindByStreet(String street){
+    public ArrayList<Employee> FindByStreet(String street){
         var emps = new ArrayList<Employee>();
         for (var emp : _employees)
         {

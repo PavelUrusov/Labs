@@ -11,8 +11,9 @@ public class Main {
 
         Company company = new Company("Google",employees);
         var result = company.FindByStreet("Red");
+        Employee.SortByName(result);
         for (var emp:result) {
-            System.out.println("Employee Id: " +  emp.GetUniqueId() + ",address: " + emp.GetAddress().GetAddress());
+            System.out.println("Employee FullName:" + emp.GetFirstname() +" Employee Id: " +  emp.GetUniqueId() + ",address: " + emp.GetAddress().GetAddress());
         }
 
     }
