@@ -21,11 +21,14 @@ public class Company {
         _title = title;
     }
 
-    public void AddEmployees(Employee ... employees)
+    public boolean AddEmployees(Employee ... employees)
     {
+        if(employees == null)
+            return false;
         for(int i = 0; i < employees.length;++i){
             _employees.add(employees[i]);
         }
+        return true;
     }
     public ArrayDeque<Employee> FindByStreet(String street){
         var emps = new ArrayDeque<Employee>();

@@ -3,10 +3,14 @@ package lab_6_16;
 import java.util.ArrayDeque;
 import java.util.Scanner;
 
+
 public class API {
     private String _input = new String();
     private Company _company = new Company("Google",Employee.TestInitialize());
     private Scanner _in = new Scanner(System.in);
+
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
 
     public void Run(){
         System.out.println("Employee management interface. To view commands, type \"help\"");
@@ -26,18 +30,25 @@ public class API {
                         System.out.println("Successfully");
                         break;
                     }
-                    System.out.println("Failed");
                     break;
 
                 }
                 case "delete":{
-                    System.out.print("Enter Employee ID: ");
-                    var id = _in.nextInt();
-                    if(_company.DeleteEmployee(id)){
+                    System.out.print("Enter Employee Id: ");
+                    var id = _in.nextLine();
+                    int parseId = 0;
+                    try {
+                        parseId = Integer.parseInt(id);
+                    }
+                    catch (NumberFormatException e){
+                        parseId = -1727382;
+                        PrintErrorMessage("Failed: Invalid Id format");
+                    }
+                    if(_company.DeleteEmployee(parseId)){
                         System.out.println("Successfully");
                         break;
                     }
-                    System.out.println("Failed: Id not found");
+                    PrintErrorMessage("Failed: Id not found");
                     break;
                 }
                 case "sort":{
@@ -59,7 +70,7 @@ public class API {
                     return;
                 }
                 default:{
-                    System.out.println("Unknown command type \"help\" to view commands");
+                    PrintErrorMessage("Unknown command type \"help\" to view commands");
                     break;
                 }
             }
@@ -70,12 +81,15 @@ public class API {
     private Employee CreateEmployee(String fullname,String address){
 
         var parsedFullname = Employee.ParseFullName(fullname);
-        if(parsedFullname == null)
-            throw new RuntimeException("Invalid format fullname");
+        if(parsedFullname == null){
+            PrintErrorMessage("Failed: Invalid format fullname");
+            return null;
+        }
         var parsedAddress = Address.ParseAddress(address);
-        if(parsedAddress == null)
-            throw new RuntimeException("Invalid format address");
-
+        if(parsedAddress == null){
+            PrintErrorMessage("Failed: Invalid format address");
+            return null;
+        }
         return new Employee(parsedFullname[0],parsedFullname[1],parsedFullname[2],new Address(parsedAddress[0],parsedAddress[1],parsedAddress[2]));
     }
 
@@ -84,5 +98,8 @@ public class API {
             System.out.println("Employee FullName:" + emp.GetFullName(false) +" Employee Id: "
                     +  emp.GetUniqueId() + ",address: " + emp.GetAddress().GetAddress());
         }
+    }
+    private void  PrintErrorMessage(String message){
+        System.out.println(ANSI_RED+message+ANSI_RESET);
     }
 }
