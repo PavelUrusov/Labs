@@ -5,22 +5,22 @@ package lab_6_16;
 //порядке.
 
 
+import java.util.ArrayDeque;
+
 //menu + use methods sort.
 public class Main {
     public static void main(String[] args) {
 
-        Employee[] employees = Employee.TestInitialize();
-
+/*        ArrayDeque<Employee> employees = Employee.TestInitialize();
         Company company = new Company("Google",employees);
         var result = company.FindByStreet("Red");
-        Employee.SortByName(result);
-        for (var emp:result) {
+        var sortedResult = Employee.SortByName(result);
+        for (var emp:sortedResult) {
             System.out.println("Employee FullName:" + emp.GetFirstname() +" Employee Id: " +  emp.GetUniqueId() + ",address: " + emp.GetAddress().GetAddress());
-        }
+        }*/
+
+        var host = new API();
+        host.Run();
 
     }
-
 }
-
-//7.10
-//

@@ -11,7 +11,7 @@ public class Address {
         _street = street;
         _house = house;
         _flat = flat;
-        _address =  _house + " "+ _street + " " + "Street, "  + "Apartment #" + flat +".";
+        _address = _street + " " + _house + " Street, "  + "Apartment #" + flat +".";
     }
 
     public String GetFlat() {
@@ -32,5 +32,13 @@ public class Address {
     }
     public Address Clone(){
         return new Address(_street,_house,_flat);
+    }
+
+    public static String[] ParseAddress(String address){
+        var result = address.split(" ");
+        if(result.length == 3){
+            return result;
+        }
+        return null;
     }
 }
