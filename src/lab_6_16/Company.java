@@ -3,6 +3,7 @@ package lab_6_16;
 import java.util.ArrayList;
 import java.util.List;
 
+//menu
 public class Company {
 
 

@@ -1,5 +1,8 @@
 package lab_5_21;
 
+
+//posts == class
+
 public class Main {
     public static void main(String[] args) {
         var department_1 = new Department(DepartmentPosts.Dean,DepartmentPosts.Teacher,DepartmentPosts.Teacher,

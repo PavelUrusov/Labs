@@ -4,6 +4,8 @@ package lab_6_16;
 //массив записать только тех из них, которые живут на улице Красной. Вывести их на экран в алфавитном
 //порядке.
 
+
+//menu + use methods sort.
 public class Main {
     public static void main(String[] args) {
 
@@ -19,3 +21,6 @@ public class Main {
     }
 
 }
+
+//7.10
+//
